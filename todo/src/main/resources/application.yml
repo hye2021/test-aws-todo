@@ -2,7 +2,7 @@ spring:
   application:
     name: todo
   datasource:
-    url: jdbc:mysql://lion-db2.czqigmiuezli.ap-northeast-2.rds.amazonaws.com:3306/mydatabase
+    url: jdbc:mysql://todo-db.czqigmiuezli.ap-northeast-2.rds.amazonaws.com/mydatabase
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,3 +13,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+  cloud:
+    aws:
+      region:
+        static: ap-northeast-2
+  config:
+    import:
+      - aws-parameterstore:/todo/config/
